@@ -38,6 +38,9 @@ You can configure the following variables in the `.env` file:
 
 - `REDIS_HOST`: Redis server hostname (default: "localhost")
 - `REDIS_PORT`: Redis server port (default: 6379)
+- `REDIS_USERNAME`: Redis username for authentication (optional)
+- `REDIS_PASSWORD`: Redis password for authentication (optional)
+- `REDIS_USE_TLS`: Set to 'true' to enable secure TLS connection (default: false)
 - `GEOSPATIAL_KEY`: The Redis key for geospatial index (default: "all_locations")
 - `LOCATIONS_FILE`: Path to the JSON file containing location data (default: "location-db.json")
 

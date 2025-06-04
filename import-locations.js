@@ -7,6 +7,9 @@ require("dotenv").config();
 // --- Configuration ---
 const REDIS_HOST = process.env.REDIS_HOST || "localhost";
 const REDIS_PORT = parseInt(process.env.REDIS_PORT || "6379");
+const REDIS_USERNAME = process.env.REDIS_USERNAME;
+const REDIS_PASSWORD = process.env.REDIS_PASSWORD;
+const REDIS_USE_TLS = process.env.REDIS_USE_TLS === "true";
 const GEOSPATIAL_KEY = process.env.GEOSPATIAL_KEY || "all_locations";
 const LOCATIONS_FILE = path.join(
   __dirname,
@@ -14,10 +17,28 @@ const LOCATIONS_FILE = path.join(
 );
 
 // --- Create a Redis client instance ---
-const redis = new Redis({
+const redisConfig = {
   host: REDIS_HOST,
   port: REDIS_PORT,
-});
+  // Only add username and password if they are provided
+  ...(REDIS_USERNAME && { username: REDIS_USERNAME }),
+  ...(REDIS_PASSWORD && { password: REDIS_PASSWORD }),
+  // Enable TLS if specified
+  ...(REDIS_USE_TLS && { tls: {} }),
+  // Reconnect strategy
+  retryStrategy: (times) => {
+    // Exponential backoff with max of 10 seconds
+    const delay = Math.min(times * 500, 10000);
+    return delay;
+  },
+};
+
+console.log(
+  `Connecting to Redis at ${REDIS_HOST}:${REDIS_PORT}${
+    REDIS_USE_TLS ? " (secure)" : ""
+  }`
+);
+const redis = new Redis(redisConfig);
 
 redis.on("connect", () => {
   console.log("Connected to Redis server!");

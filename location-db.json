@@ -1606,18 +1606,9 @@
     "address": "468 Riverbend - Edmonton",
     "city": "Edmonton",
     "province": "AB",
-    "postal_code": null,
-    "latitude": null,
-    "longitude": null
-  },
-  {
-    "restaurant_name": "T6R 2X2 ,53.4684447,-113.5833328",
-    "address": null,
-    "city": null,
-    "province": null,
-    "postal_code": null,
-    "latitude": null,
-    "longitude": null
+    "postal_code": "T6R 2X2",
+    "latitude": 53.4684447,
+    "longitude": -113.5833328
   },
   {
     "restaurant_name": "Manning Drive",
