@@ -67,6 +67,14 @@ Once you have your location data in JSON format, you can import it to Redis:
 node import-locations.js
 ```
 
+or
+
+```bash
+node import-locations.js --import
+```
+
+This command will also reimport existing data, cleaning and repairing any issues found in the JSON file.
+
 This script will:
 
 1. Read from the configured JSON file

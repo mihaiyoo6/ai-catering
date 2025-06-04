@@ -367,7 +367,12 @@ async function findNearbyLocations(
 
 async function main() {
   try {
-    await importLocationsToRedis(GEOSPATIAL_KEY, LOCATIONS_FILE);
+    const args = process.argv.slice(2); // Get arguments starting from the third element
+
+    const useImport = args[0];
+
+    useImport === "--import" &&
+      (await importLocationsToRedis(GEOSPATIAL_KEY, LOCATIONS_FILE));
 
     // Optional: Verify some of the imported data
     console.log("\n--- Verifying imported data ---");
