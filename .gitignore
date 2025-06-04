@@ -29,6 +29,13 @@ coverage
 # Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
 
+# Environment variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
 # Bower dependency directory (https://bower.io/)
 bower_components
 

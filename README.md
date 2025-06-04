@@ -27,13 +27,19 @@ npm install
 
 ## Configuration
 
-The default configuration in `import-locations.js` assumes:
+This project uses environment variables for configuration. Copy the `.env.example` file to a new file named `.env` and adjust the values as needed:
 
-- Redis server running on localhost:6379
-- Location data stored in `location-db.json`
-- Geospatial index key named "all_locations"
+```bash
+# Copy example environment file
+cp .env.example .env
+```
 
-You can modify these settings by editing the configuration section at the top of `import-locations.js`.
+You can configure the following variables in the `.env` file:
+
+- `REDIS_HOST`: Redis server hostname (default: "localhost")
+- `REDIS_PORT`: Redis server port (default: 6379)
+- `GEOSPATIAL_KEY`: The Redis key for geospatial index (default: "all_locations")
+- `LOCATIONS_FILE`: Path to the JSON file containing location data (default: "location-db.json")
 
 ## Usage
 

@@ -1,12 +1,17 @@
 const fs = require("fs").promises;
 const path = require("path");
 const Redis = require("ioredis");
+// Load environment variables from .env file
+require("dotenv").config();
 
 // --- Configuration ---
-const REDIS_HOST = "localhost"; // Or your Redis host
-const REDIS_PORT = 6379; // Or your Redis port
-const GEOSPATIAL_KEY = "all_locations"; // The Redis key for our geospatial index
-const LOCATIONS_FILE = path.join(__dirname, "location-db.json");
+const REDIS_HOST = process.env.REDIS_HOST || "localhost";
+const REDIS_PORT = parseInt(process.env.REDIS_PORT || "6379");
+const GEOSPATIAL_KEY = process.env.GEOSPATIAL_KEY || "all_locations";
+const LOCATIONS_FILE = path.join(
+  __dirname,
+  process.env.LOCATIONS_FILE || "location-db.json"
+);
 
 // --- Create a Redis client instance ---
 const redis = new Redis({
