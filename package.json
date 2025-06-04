@@ -1,0 +1,24 @@
+{
+  "name": "ai-catering",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mihaiyoo6/ai-catering.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/mihaiyoo6/ai-catering/issues"
+  },
+  "homepage": "https://github.com/mihaiyoo6/ai-catering#readme",
+  "description": "",
+  "dependencies": {
+    "ioredis": "^5.6.1"
+  }
+}
